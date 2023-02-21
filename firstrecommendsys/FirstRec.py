@@ -69,6 +69,34 @@ class FirstRec:
         return train,test
 
 
+"""
+    计算皮尔逊系数：
+        rating1：用户1的评分记录：{"movieid":rate1}
+        rating2:用户1的评分记录：{"movieid":rate1}
+"""
+def person(self,rating1,rating2):
+    sum_xy = 0
+    sum_x = 0
+    sum_y = 0
+    sum_x2 =0
+    sum_y2=0
+    num = 0
+    for key1 in rating1.keys():
+        for key2 in rating2.keys():
+            num += 1
+            x = rating1[kye1]
+            y = rating2[key2]
+            sum_xy += x * y
+            sum_x += x
+            sum_y += y
+            sum_x2 += math.pow(x,2)
+            sum_y2 += math.pow(y,2)
+    denominator = math.sqrt(sum_x2 - math.pow(sum_x,2) / num) * math.sqrt(sum_y2 - math.pow(sum_y,2) / num )
+    if num == 0:
+        return 0
+    else:
+        return (sum_xy - (sum_x*sum_y) / num) /denominator
+
 if __name__ == "__main__":
     fp = "F:\\data\\archive\\test_path"
     seed = 30
